@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <select id="zuo" multiple="multiple">
+                    multiple 属性规定可同时选择多个选项
+                    <option>登录</option>
+                    <option>员工管理</option>
+                    <option>部门管理</option>
+                    <option>订单管理</option>
+                </select>
+            </td>
+            <td>
+                <input type="button" value=">" onclick="rightMove()"><br>
+                <input type="button" value=">>" onclick="rightMoveAll()"><br>
+                <input type="button" value="&lt" onclick="leftMove()"><br>
+                <input type="button" value="&lt&lt" onclick="leftMoveAll()">
+            </td>
+            <td>
+                <select id="you" multiple="multiple">
+                    
+                </select>
+            </td>
+        </tr>
+    </table>
+    
+    <script>
+        function rightMove() {
+            var zuos= $('#zuo option');
+            $.each(zuos, function(index, value) {
+                var s=$(this).prop('selected');
+                console.log(s);
+                if (s) {
+                    $(this).appendTo('#you')
+                }
+            })
+        }
+
+        function rightMoveAll() {
+            var zuos= $('#zuo option');
+            $.each(zuos, function(index, value) {
+              $(this).appendTo('#you')
+
+            })
+        }
+        function leftMove() {
+            var zuos= $('#you option');
+            $.each(zuos, function(index, value) {
+                var s=$(this).prop('selected');
+                console.log(s);
+                if (s) {
+                    $(this).appendTo('#zuo')
+                }
+            })
+        }
+
+        function leftMoveAll() {
+            var zuos= $('#you option');
+            $.each(zuos, function(index, value) {
+              $(this).appendTo('#zuo')
+
+            })
+        }
+    </script>
+
+    
+    <style type="text/css">
+        select {
+            width: 200px;
+            height: 200px;
+    
+        }
+    </style>
+</body>
+</html>
